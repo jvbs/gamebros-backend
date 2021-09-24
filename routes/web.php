@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/greeting', function () {
     return 'Olá Gamebros';
 });
+
+Route::get('/dash', 'App\Http\Controllers\DashController@show');
