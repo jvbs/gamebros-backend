@@ -19,3 +19,4 @@ Route::get('/greeting', function () {
 
 Route::get('/dash', 'App\Http\Controllers\DashController@show');
 Route::get('/login', 'App\Http\Controllers\LoginController@show');
+Route::get('/customer', 'App\Http\Controllers\ClientesController@index');

@@ -24,8 +24,8 @@ html{
   height: 100%;
 }
 
-.box .row {
-}
+/* .box .row {
+} */
 
 .box .row.header {
   flex: 0 1 auto;
@@ -288,4 +288,45 @@ p span {
 .BtnEntrar:hover {
   background-color: #ffeeaf !important;
   
+}
+
+
+/* Clientes */
+
+.form-control{
+  /* border: 1px solid #D3AF15 !important; */
+  border: 0 none !important;
+  border-bottom: #E91E63 2px solid !important;
+}
+
+.form-control:focus{ 
+  border-color: inherit !important; 
+  -webkit-box-shadow: none !important; 
+  box-shadow: none !important; 
+}
+
+.form-control:focus{ 
+  border-color: #D3AF15 !important;
+}
+
+.label-table-title{
+  color: #170085;
+}
+
+.BtnCadastar {
+  background-color: #E91E63 !important;
+  color: #ffffff !important;
+  border-radius: 30px !important;
+  transition: 0.5s ease-in-out !important;
+  border: #FFFFFF;
+  text-align: center !important;
+  padding: 2%;
+  border: solid 2px #E91E63 !important;
+}
+
+.BtnCadastar:hover {
+  background-color: #f1f1f1 !important;
+  color: #E91E63 !important;
+  font-weight: bolder;
+  border: solid 2px #f1f1f1 !important;
 }
