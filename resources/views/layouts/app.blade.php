@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="col-md-3 col-4 content-center">
-                <button type="button" class="btn btn-lg BtnLogout">Sair</button>
+                <a href="{{ route('login') }}" type="button" class="btn btn-lg BtnLogout">Sair</a>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
                         <a href="{{ route('dash.index') }}" class="{{ Request::is('dash') ? 'active' : '' }}">Dashboard</a>
                         <a href="{{ route('clientes.index')}}" class="{{ Request::is('customer/*') ? 'active' : '' }}">Clientes</a>
                         <a href="#">Pedidos</a>
-                        <a href="#">Produtos</a>
+                        <a href="{{ route('produtos.index')}}" class="{{ Request::is('product/*') ? 'active' : '' }}">Produtos</a>
                         <a href="#">Categorias</a>
                         <a href="#">Usuários</a>
                     </div>

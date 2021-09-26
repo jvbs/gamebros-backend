@@ -18,8 +18,11 @@ Route::get('/greeting', function () {
 });
 
 Route::get('/dash', 'App\Http\Controllers\DashController@show')->name('dash.index');
-Route::get('/login', 'App\Http\Controllers\LoginController@show');
+Route::get('/login', 'App\Http\Controllers\LoginController@show')->name('login');
+
 Route::get('/customer/index', 'App\Http\Controllers\ClientesController@index')->name('clientes.index');
 Route::get('/customer/create', 'App\Http\Controllers\ClientesController@create')->name('clientes.create');
 
+Route::get('/product/index', 'App\Http\Controllers\ProdutosController@index')->name('produtos.index');
+Route::get('/product/create', 'App\Http\Controllers\ProdutosController@create')->name('produtos.create');
 // Route::resource('customer', 'App\Http\Controllers\ClientesController');

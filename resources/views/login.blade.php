@@ -34,7 +34,7 @@
                     <label for="password">Senha*</label>
                 </div>
                 <div class="content-center ">
-                    <div type="button" class="col-8 btn-lg BtnEntrar mt-4">Entrar</div>
+                    <a href="{{ route('dash.index') }}" type="button" class="col-8 btn-lg BtnEntrar mt-4">Entrar</a>
                 </div>
                 <p style="font-size: 12px; color: gray; margin-top:4vh; margin-bottom:4vh">
                     Os campos identificados com asteriscos (*) são de preenchimento

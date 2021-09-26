@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div class='row'>
-        <div class="col-md-4 col-12 content-center mt-3" style="">
+        <div class="col-md-4 col-12" style="">
             <h1 style="color: #170085">Dashboard</h1>
         </div>
-        <div class="col-md-8 col-12" style="background-color: #170085; border-radius: 30px; height: 45%; margin-top: 3.5vh">
+        <div class="col-md-8 col-12" style="background-color: #170085; border-radius: 30px; height: 45%; margin-top: 1%">
             .
         </div>
     </div>
@@ -19,11 +19,11 @@
                 <p><span>12</span><span>Pedidos</span></p>
             </div>
         </div>
-        <div class="col-lg-3 col-6 content-center" style="color: #149E3B;">
+        <a href="{{ route('produtos.index')}}" class="col-lg-3 col-6 content-center" style="color: #149E3B;">
             <div class="Metricas">
                 <p><span>34</span><span>Produtos</span></p>
             </div>
-        </div>
+        </a>
         <div class="col-lg-3 col-6 content-center" style="color: #D0AB0A;">
             <div class="Metricas">
                 <p><span>4</span><span>Categorias</span></p>

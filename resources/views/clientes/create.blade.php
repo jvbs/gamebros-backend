@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div class='row'>
-        <div class="col-md-4 col-12 content-center mt-3" style="">
+        <div class="col-md-4 col-12" style="">
             <h1 style="color: #170085">Novo Cliente</h1>
         </div>
-        <div class="col-md-8 col-12" style="background-color: #170085; border-radius: 30px; height: 45%; margin-top: 4vh">
+        <div class="col-md-8 col-12" style="background-color: #170085; border-radius: 30px; height: 45%; margin-top: 1%">
             .
         </div>
     </div>
