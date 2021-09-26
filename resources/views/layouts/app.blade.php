@@ -51,8 +51,8 @@
             <div class='row'>
                 <div class="col-md-3 col-12 content-center" style="background-color: white">
                     <div class="vertical-menu">
-                        <a href="#" class="active">Dashboard</a>
-                        <a href="#">Clientes</a>
+                        <a href="{{ route('dash.index') }}" class="{{ Request::is('dash') ? 'active' : '' }}">Dashboard</a>
+                        <a href="{{ route('clientes.index')}}" class="{{ Request::is('customer/*') ? 'active' : '' }}">Clientes</a>
                         <a href="#">Pedidos</a>
                         <a href="#">Produtos</a>
                         <a href="#">Categorias</a>

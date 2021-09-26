@@ -9,11 +9,11 @@
         </div>
     </div>
     <div class='row'>
-        <div class="col-lg-3 col-6 content-center" style="color: #E91E63;">
+        <a href="{{ route('clientes.index')}}" class="col-lg-3 col-6 content-center" style="color: #E91E63;">
             <div class="Metricas">
                 <p><span>40</span><span>Clientes</span></p>
             </div>
-        </div>
+        </a>
         <div class="col-lg-3 col-6 content-center" style="color: #0CA4D4;">
             <div class="Metricas">
                 <p><span>12</span><span>Pedidos</span></p>

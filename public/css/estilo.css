@@ -13,6 +13,14 @@ html{
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+a{
+  text-decoration: none !important;
+}
+
+a:link {text-decoration: none !important;}
+
+a:visited {text-decoration: none !important;}
+
 @font-face {
   font-family: "Gotham";
   src: url("../fonts/GothamRounded-Book.otf");
@@ -325,8 +333,47 @@ p span {
 }
 
 .BtnCadastar:hover {
-  background-color: #f1f1f1 !important;
-  color: #E91E63 !important;
+  background-color: #170085!important;
+  color: #f1f1f1 !important;
   font-weight: bolder;
   border: solid 2px #f1f1f1 !important;
+}
+
+.content-form{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.boxBtnForm{
+  display: flex;
+}
+
+.BtnSalvar {
+  background-color: #FFE974 !important;
+  color: #252525 !important;
+  border-radius: 30px !important;
+  transition: 0.5s ease-in-out !important;
+  border: #FFFFFF;
+  text-align: center !important;
+  padding: 2%;
+  border: solid 2px #FFE974 !important;
+  font-weight: bold;
+}
+
+.BtnCancelar{
+  background-color: #FFF7CA !important;
+  color: #252525 !important;
+  border-radius: 30px !important;
+  transition: 0.5s ease-in-out !important;
+  border: #FFFFFF;
+  text-align: center !important;
+  padding: 2%;
+  border: solid 2px #FFF7CA !important;
+  font-weight: bold;
+}
+
+.BtnSalvar:hover,
+.BtnCancelar:hover{
+  opacity: 60%;
+  border: solid 2px #dbba00 !important;
 }

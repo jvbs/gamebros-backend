@@ -29,7 +29,7 @@
 
         <div class="col-lg-5 col-12">
             <div class="content-center">
-                <div type="button" class="col-8 BtnCadastar mt-3">Adicionar Cliente</div>
+                <a href="{{ route('clientes.create')}}" type="button" class="col-8 BtnCadastar mt-3">Adicionar Cliente</a>
             </div>
         </div>
 
