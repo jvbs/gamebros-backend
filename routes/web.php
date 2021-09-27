@@ -33,5 +33,7 @@ Route::get('/categories/create', 'App\Http\Controllers\CategoriasController@crea
 Route::get('/user/index', 'App\Http\Controllers\UsuariosController@index')->name('usuarios.index');
 Route::get('/user/create', 'App\Http\Controllers\UsuariosController@create')->name('usuarios.create');
 
+Route::get('/order/index', 'App\Http\Controllers\PedidosController@index')->name('pedidos.index');
+
 
 

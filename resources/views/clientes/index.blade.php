@@ -36,7 +36,7 @@
 
     </div>
 
-    <table class="table" style="margin-top: 6vh">
+    <table class="table" style="margin-top: 6vh; text-align: center">
         <thead>
             <tr class="label-table-title">
                 <th scope="col">#</th>

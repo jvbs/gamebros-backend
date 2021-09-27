@@ -14,11 +14,11 @@
                 <p><span>40</span><span>Clientes</span></p>
             </div>
         </a>
-        <div class="col-lg-3 col-6 content-center" style="color: #0CA4D4;">
+        <a href="{{ route('pedidos.index')}}" class="col-lg-3 col-6 content-center" style="color: #0CA4D4;">
             <div class="Metricas">
                 <p><span>12</span><span>Pedidos</span></p>
             </div>
-        </div>
+        </a>
         <a href="{{ route('produtos.index')}}" class="col-lg-3 col-6 content-center" style="color: #149E3B;">
             <div class="Metricas">
                 <p><span>34</span><span>Produtos</span></p>

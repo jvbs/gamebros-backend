@@ -53,7 +53,7 @@
                     <div class="vertical-menu">
                         <a href="{{ route('dash.index') }}" class="{{ Request::is('dash') ? 'active' : '' }}">Dashboard</a>
                         <a href="{{ route('clientes.index')}}" class="{{ Request::is('customer/*') ? 'active' : '' }}">Clientes</a>
-                        <a href="#">Pedidos</a>
+                        <a href="{{ route('pedidos.index')}}" class="{{ Request::is('order/*') ? 'active' : '' }}">Pedidos</a>
                         <a href="{{ route('produtos.index')}}" class="{{ Request::is('product/*') ? 'active' : '' }}">Produtos</a>
                         <a href="{{ route('categorias.index')}}" class="{{ Request::is('categories/*') ? 'active' : '' }}">Categorias</a>
                         <a href="{{ route('usuarios.index')}}" class="{{ Request::is('user/*') ? 'active' : '' }}">Usuários</a>
