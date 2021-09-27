@@ -30,6 +30,8 @@ Route::get('/product/create', 'App\Http\Controllers\ProdutosController@create')-
 Route::get('/categories/index', 'App\Http\Controllers\CategoriasController@index')->name('categorias.index');
 Route::get('/categories/create', 'App\Http\Controllers\CategoriasController@create')->name('categorias.create');
 
+Route::get('/user/index', 'App\Http\Controllers\UsuariosController@index')->name('usuarios.index');
+Route::get('/user/create', 'App\Http\Controllers\UsuariosController@create')->name('usuarios.create');
 
 
 
