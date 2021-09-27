@@ -24,11 +24,11 @@
                 <p><span>34</span><span>Produtos</span></p>
             </div>
         </a>
-        <div class="col-lg-3 col-6 content-center" style="color: #D0AB0A;">
+        <a href="{{ route('categorias.index')}}" class="col-lg-3 col-6 content-center" style="color: #D0AB0A;">
             <div class="Metricas">
                 <p><span>4</span><span>Categorias</span></p>
             </div>
-        </div>
+        </a>
     </div>
     <div class='row mt-4'>
         <div class="col-lg-3 col-md-3 col-sm-4 col-3 " style="background-color: #50E87B; border-radius: 30px 0 0 30px">

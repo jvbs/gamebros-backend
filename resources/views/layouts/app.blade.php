@@ -27,7 +27,7 @@
                 <div class="bloco">
 
                     <div class="userPhotoWrapper">
-                        <img class="userFoto" src="{{ asset('img/avatar2.png') }}" alt="userPhoto" />
+                        <img class="userFoto" src="{{ asset('img/avatar_mario.png') }}" alt="userPhoto" />
                     </div>
 
                     <div class="BoxTextCollaborator">
@@ -55,7 +55,7 @@
                         <a href="{{ route('clientes.index')}}" class="{{ Request::is('customer/*') ? 'active' : '' }}">Clientes</a>
                         <a href="#">Pedidos</a>
                         <a href="{{ route('produtos.index')}}" class="{{ Request::is('product/*') ? 'active' : '' }}">Produtos</a>
-                        <a href="#">Categorias</a>
+                        <a  href="{{ route('categorias.index')}}" class="{{ Request::is('categories/*') ? 'active' : '' }}">Categorias</a>
                         <a href="#">Usuários</a>
                     </div>
                 </div>
