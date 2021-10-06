@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/hello', function () {
     return 'Olá  Gamebros';
 });
+
+// Create new category
+Route::post('/categoria', [CategoriasController::class, 'store']);
+// Update category by ID
+Route::patch('/categoria/{id}', [CategoriasController::class, 'update']);
+// Delete category by ID
+Route::delete('/categoria/{id}', [CategoriasController::class, 'destroy']);

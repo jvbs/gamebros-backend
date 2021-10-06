@@ -12,10 +12,9 @@
         <div class="col-lg-6 col-10">
             <div class="form-group">
                 <label for="exampleInputEmail1"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="text" name="term" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Informe o nome da categoria">
             </div>
-
         </div>
 
         <div class="col-1">
@@ -42,13 +41,17 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($categorias as $category)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
+                <th scope="row">{{$category->id}}</th>
+                <td>{{$category->name}}</td>
                 <td style="padding-left: 18%">
-                    <div type="button" class="col-9 btn-sm BtnEntrar">Editar</div>
+                    <div class="d-flex justify-content-end">
+                        <div type="button" class="col-6 btn-sm BtnEntrar"><a href="{{route('categorias.edit', $category->id)}}">Editar</a></div>
+                    </div>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 
