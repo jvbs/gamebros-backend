@@ -28,6 +28,7 @@ Route::get('/product/index', 'App\Http\Controllers\ProdutosController@index')->n
 Route::get('/product/create', 'App\Http\Controllers\ProdutosController@create')->name('produtos.create');
 
 Route::get('/categories/index', 'App\Http\Controllers\CategoriasController@index')->name('categorias.index');
+Route::get('/categories/indexTest', 'App\Http\Controllers\CategoriasController@indexTest')->name('categorias.indexTest');
 Route::get('/categories/create', 'App\Http\Controllers\CategoriasController@create')->name('categorias.create');
 Route::post('/categories/store', 'App\Http\Controllers\CategoriasController@store')->name('categorias.store');
 Route::get('/categories/edit/{id}', 'App\Http\Controllers\CategoriasController@edit')->name('categorias.edit');

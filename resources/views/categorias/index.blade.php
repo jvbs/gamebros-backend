@@ -8,29 +8,30 @@
             .
         </div>
     </div>
-    <div class='row'>
-        <div class="col-lg-6 col-10">
-            <div class="form-group">
-                <label for="exampleInputEmail1"></label>
-                <input type="text" name="term" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Informe o nome da categoria">
+    <form method="GET" action="{{route('categorias.index')}}">
+        <div class='row'>
+                <div class="col-lg-6 col-10">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"></label>
+                        <input type="text" name="term" class="form-control" id="term" aria-describedby="term"
+                            placeholder="Informe o nome da categoria">
+                    </div>
+                </div>
+
+            <div class="col-1">
+                <i class="large material-icons mt-3" style="font-size: 300%; color: #170085; cursor: pointer">search</i>
+            </div>
+
+
+            <div class="col-lg-5 col-12">
+                <div class="content-center">
+                    <a href="{{ route('categorias.create') }}" type="button" class="col-8 BtnCadastar mt-3">Adicionar
+                        Categoria</a>
+                </div>
             </div>
         </div>
+    </form>
 
-        <div class="col-1">
-            <i class="large material-icons mt-3" style="font-size: 300%; color: #170085; cursor: pointer">search</i>
-        </div>
-
-
-        <div class="col-lg-5 col-12">
-            <div class="content-center">
-                <a href="{{ route('categorias.create') }}" type="button" class="col-8 BtnCadastar mt-3">Adicionar
-                    Categoria</a>
-            </div>
-        </div>
-
-
-    </div>
 
     <table class="table" style="margin-top: 6vh; text-align: center">
         <thead>
@@ -45,9 +46,16 @@
             <tr>
                 <th scope="row">{{$category->id}}</th>
                 <td>{{$category->name}}</td>
-                <td style="padding-left: 18%">
+                <td>
                     <div class="d-flex justify-content-end">
-                        <div type="button" class="col-6 btn-sm BtnEntrar"><a href="{{route('categorias.edit', $category->id)}}">Editar</a></div>
+                        <div type="button" class="col-3 btn-sm BtnEntrar"><a href="{{route('categorias.edit', $category->id)}}">Editar</a></div>
+                        <div type="button" class="col-3 btn-sm BtnRemover">
+                            <form action="{{route('categorias.destroy', $category->id)}}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" style="all: unset">Remover</div>
+                            </form>
+                        </div>
                     </div>
                 </td>
             </tr>

@@ -362,6 +362,18 @@ p span {
   font-weight: bold;
 }
 
+.BtnRemover {
+  background-color: #EC3227 !important;
+  color: #dfdfdf !important;
+  border-radius: 30px !important;
+  transition: 0.5s ease-in-out !important;
+  border: #FFFFFF;
+  text-align: center !important;
+  padding: 2%;
+  border: solid 2px #EC3227 !important;
+  font-weight: bold;
+}
+
 .BtnCancelar{
   background-color: #FFF7CA !important;
   color: #252525 !important;
@@ -378,6 +390,11 @@ p span {
 .BtnCancelar:hover{
   opacity: 60%;
   border: solid 2px #dbba00 !important;
+}
+
+.BtnRemover:hover{
+  opacity: 40%;
+  border: solid 2px #ff6565 !important;
 }
 
 /* Produtos */

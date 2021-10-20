@@ -14,11 +14,19 @@ class CategoriasController extends Controller
     {
         $this->categoria = $categoria;
     }
-
-    public function index()
+    
+    public function index(Request $request)
     {
-        $categorias = $this->categoria->paginate(10);
-        return view('categorias.index', compact('categorias'));
+        $categorias = Categories::where([
+            ['name', '!=', Null],
+            [function ($query) use ($request) {
+                if (($term = $request->term)) {
+                    $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
+                }
+            }]
+        ])->paginate(10);
+
+        return view('categorias.index', compact('categorias'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
