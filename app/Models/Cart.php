@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Categories extends Model
+class Cart extends Model
 {
     //use SoftDeletes;
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $guarded = [];
+
+    protected $table = 'cart';
 }
