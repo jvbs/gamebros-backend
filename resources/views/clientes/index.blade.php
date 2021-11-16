@@ -8,6 +8,7 @@
             .
         </div>
     </div>
+    <form method="GET" action="{{route('clientes.index')}}">
     <div class='row'>
         <div class="col-lg-6 col-10">
             {{-- <div class="input-field col-12 mt-4">
@@ -16,7 +17,7 @@
             </div> --}}
             <div class="form-group">
                 <label for="exampleInputEmail1"></label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="text" name="term" class="form-control" id="term"
                     placeholder="Informe o nome, email ou CPF do cliente">
             </div>
 
@@ -35,6 +36,7 @@
 
 
     </div>
+    </form>
 
     <table class="table" style="margin-top: 6vh; text-align: center">
         <thead>
@@ -47,33 +49,30 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($clientes as $cliente)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                @if ($cliente->role == 'client')
+                <th scope="row">{{$cliente->id}}</th>
+                <td>{{$cliente->name}}</td>
+                <td>{{$cliente->cpf}}</td>
+                <td>{{$cliente->email}}</td>
                 <td>
-                    <div type="button" class="col-8 btn-sm BtnEntrar">Editar</div>
-                </td>
+                <div class="d-flex justify-content-end">
+                        <div type="button" class="col-4 btn-sm BtnEntrar"><a href="{{route('clientes.edit', $cliente->id)}}">Editar</a></div>
+                        <div class="col-1"></div>
+                        <div type="button" class="col-4 btn-sm BtnRemover">
+                            <form action="{{route('clientes.destroy', $cliente->id)}}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" style="all: unset">Remover</div>
+                            </form>
+                        </div>
+                    </div>
+<!--                     <div type="button" class="col-8 btn-sm BtnEntrar"><a href="{{route('clientes.edit', $cliente->id)}}">Editar</a></div>
+ -->                </td>
+                @endif
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>
-                    <div type="button" class="col-8 btn-sm BtnEntrar">Editar</div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>
-                    <div type="button" class="col-8 btn-sm BtnEntrar">Editar</div>
-                </td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
 

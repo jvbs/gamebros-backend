@@ -2,7 +2,7 @@
 @section('content')
     <div class='row'>
         <div class="col-md-4 col-12" style="">
-            <h1 style="color: #170085">Novo Cliente</h1>
+            <h1 style="color: #170085">Novo Usuário</h1>
         </div>
         <div class="col-md-8 col-12" style="background-color: #170085; border-radius: 30px; height: 45%; margin-top: 1%">
             .
@@ -14,20 +14,21 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
     </div>
 
+    <form method="POST" action="{{route('usuarios.store')}}">
+    @csrf
     <div class="">
         <div class="row">
             <h1 style="font-size: 24px; margin-top: 2vh; margin-bottom: 3vh; color: #170085">Informações pessoais</h1>
             <div class="col-md-4 col-6">
                 <div class="form-group">
                     <label for="user">Nome*</label>
-                    <input type="text" class="form-control" id="InputNome" placeholder="">
+                    <input type="text" name="name" class="form-control" id="InputNome" placeholder="">
                 </div>
             </div>
             <div class="col-md-4 col-6">
                 <div class="form-group">
                     <label for="user">CPF*</label>
-    
-                    <input type="text" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="InputCPF" placeholder="">
+                    <input type="text" name="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="InputCPF" placeholder="">
                 </div>
             </div>
 
@@ -38,32 +39,32 @@
             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="user">E-mail*</label>
-                    <input type="email" class="form-control" id="InputEmail" placeholder="">
+                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="">
                 </div>
             </div>
             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="user">Telefone</label>
-                    <input type="text" class="form-control" id="InputTelefone" placeholder="">
+                    <input type="text" name="phone" class="form-control" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" id="InputTelefone" placeholder="">
                 </div>
             </div>
             <div class="col-md-4 col-6 mt-4">
-                <div class="form-group">
+<!--                 <div class="form-group">
                     <label for="user">Cargo</label>
                     <input type="text" class="form-control" id="InputCargo" placeholder="">
-                </div>
+                </div> -->
             </div>
 
             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="InputSenha">Senha*</label>
-                    <input type="password" class="form-control" id="InputSenha" placeholder="">
+                    <input type="password" name="password" class="form-control" id="InputSenha" placeholder="">
                 </div>
             </div>
             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="InputConfirmarSenha">Confirmar Senha*</label>
-                    <input type="password" class="form-control" id="InputConfirmarSenha" placeholder="">
+                    <input type="password" name="password" class="form-control" id="InputConfirmarSenha" placeholder="">
                 </div>
             </div>
             <div class="col-md-4">
@@ -80,9 +81,10 @@
             </div>
             <div class="col-lg-3 col-6">
                 <div class="boxBtnForm">
-                    <div type="submit" class="col-12 BtnSalvar btnOpacity mt-3">Salvar</div>
+                    <button type="submit" class="col-12 BtnSalvar btnOpacity mt-3">Salvar</div>
                 </div>
             </div>
         </div>
     </div>
+    </form>
 @endsection

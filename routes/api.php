@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::resource('produtos', App\Http\Controllers\API\ProdutosController::class);
 Route::resource('categorias', App\Http\Controllers\API\CategoriasController::class);
 Route::resource('usuarios', App\Http\Controllers\API\UsuariosController::class);
 
+//Route::post('/login', 'App\Http\Controllers\AuthController@loginCustom')->name('loginCustom');
+//Route::get('/signOut', 'App\Http\Controllers\AuthController@signOut')->name('signOut');

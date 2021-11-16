@@ -8,12 +8,13 @@
             .
         </div>
     </div>
+    <form method="GET" action="{{route('usuarios.index')}}">
     <div class='row'>
         <div class="col-lg-6 col-10">
             
             <div class="form-group">
                 <label for="InputUsuario"></label>
-                <input type="text" class="form-control" id="InputUsuario"
+                <input type="text" name="term" class="form-control" id="term"
                     placeholder="Informe o nome ou CPF do usuario">
             </div>
 
@@ -32,6 +33,7 @@
 
 
     </div>
+    </form>
 
     <table class="table" style="margin-top: 6vh; text-align: center">
         <thead>
@@ -44,16 +46,30 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($usuarios as $usuario)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                @if ($usuario->role == 'admin')
+                <th scope="row">{{$usuario->id}}</th>
+                <td>{{$usuario->name}}</td>
+                <td>{{$usuario->cpf}}</td>
+                <td>{{$usuario->email}}</td>
                 <td>
-                    <div type="button" class="col-8 btn-sm BtnEntrar">Editar</div>
-                </td>
+                <div class="d-flex justify-content-end">
+                        <div type="button" class="col-4 btn-sm BtnEntrar"><a href="{{route('usuarios.edit', $usuario->id)}}">Editar</a></div>
+                        <div class="col-1"></div>
+                        <div type="button" class="col-4 btn-sm BtnRemover">
+                            <form action="{{route('usuarios.destroy', $usuario->id)}}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" style="all: unset">Remover</div>
+                            </form>
+                        </div>
+                    </div>
+<!--                     <div type="button" class="col-8 btn-sm BtnEntrar"><a href="{{route('usuarios.edit', $usuario->id)}}">Editar</a></div>
+ -->                </td>
+                @endif
             </tr>
-        
+            @endforeach
         </tbody>
     </table>
 

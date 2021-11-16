@@ -36,14 +36,18 @@
                         </div>
 
                         <div class="BoxTextCollaboratorInformation">
-                            <p>Pedro Henrique</p>
+                            @if(auth()->user())
+                                <p>{{auth()->user()->name}}</p>
+                            @else
+                                <p>Guest</p>
+                            @endif
                         </div>
                     </div>
 
                 </div>
             </div>
             <div class="col-md-3 col-4 content-center">
-                <a href="{{ route('login') }}" type="button" class="btn btn-lg BtnLogout">Sair</a>
+                <a href="{{ route('signOut') }}" type="button" class="btn btn-lg BtnLogout">Sair</a>
             </div>
         </div>
 

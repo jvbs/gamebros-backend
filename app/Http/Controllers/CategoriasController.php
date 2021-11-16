@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
@@ -10,14 +10,14 @@ class CategoriasController extends Controller
 
     private $categoria;
 
-    public function __construct(Categories $categoria)
+    public function __construct(Category $categoria)
     {
         $this->categoria = $categoria;
     }
     
     public function index(Request $request)
     {
-        $categorias = Categories::where([
+        $categorias = Category::where([
             ['name', '!=', Null],
             [function ($query) use ($request) {
                 if (($term = $request->term)) {
@@ -36,7 +36,7 @@ class CategoriasController extends Controller
 
     public function store(Request $request)
     {
-        Categories::create($request->all());
+        Category::create($request->all());
         return redirect(route('categorias.index'))->with('success', 'Categoria criada');
     }
 

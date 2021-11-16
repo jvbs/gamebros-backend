@@ -15,12 +15,12 @@ class ProdutosController extends Controller
         'name' => 'required|between:5,50',
         // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         'description' => 'required',
-        'type' => 'required|integer',
         'price' => 'required|numeric',
         'discount' => 'required|between:1,100',
         'stock' => 'required|integer|between:1,9999',
-        'warranty' => 'required|integer',
-        'category_id' => 'required|integer'
+        'sku' => 'required',
+        'category_id' => 'required|integer',
+        'subCategory' => 'required'
     ];
 
     /**
