@@ -13,6 +13,12 @@
         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked />
         <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
     </div>
+    
+    @if($errors->any())
+        <span class="text-danger">
+            {{ implode('', $errors->all(':message')) }}
+        </span>
+    @endif
 
     <form method="POST" action="{{route('produtos.store')}}" enctype="multipart/form-data">
     @csrf

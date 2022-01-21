@@ -58,22 +58,22 @@
                 <td>{{$cliente->email}}</td>
                 <td>
                 <div class="d-flex justify-content-end">
-                        <div type="button" class="col-4 btn-sm BtnEntrar"><a href="{{route('clientes.edit', $cliente->id)}}">Editar</a></div>
-                        <div class="col-1"></div>
-                        <div type="button" class="col-4 btn-sm BtnRemover">
-                            <form action="{{route('clientes.destroy', $cliente->id)}}" method="POST">
-                                @csrf
-                                @method("DELETE")
-                                <button type="submit" style="all: unset">Remover</div>
-                            </form>
-                        </div>
+                    <div type="button" class="col-4 btn-sm BtnEntrar"><a href="{{route('clientes.edit', $cliente->id)}}">Editar</a></div>
+                    <div class="col-1"></div>
+                    <div type="button" class="col-4 btn-sm BtnRemover">
+                        <form action="{{route('clientes.destroy', $cliente->id)}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" style="all: unset">Remover</div>
+                        </form>
                     </div>
+                </div>
 <!--                     <div type="button" class="col-8 btn-sm BtnEntrar"><a href="{{route('clientes.edit', $cliente->id)}}">Editar</a></div>
- -->                </td>
-                @endif
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+-->             </td>
+            @endif
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
 @endsection

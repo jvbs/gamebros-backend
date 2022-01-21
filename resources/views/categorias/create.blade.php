@@ -14,6 +14,12 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
     </div>
 
+    @if($errors->any())
+        <span class="text-danger">
+            {{ implode('', $errors->all(':message')) }}
+        </span>
+    @endif
+
     <form method="POST" action="{{route('categorias.store')}}">
     @csrf
     <div class="row">
@@ -22,7 +28,7 @@
                 <div class="col-12 mt-4">
                     <div class="form-group">
                         <label for="nome">Nome*</label>
-                        <input type="text" name="name" class="form-control" id="InputNome" placeholder="">
+                        <input type="text" name="name" class="form-control" id="InputNome" placeholder="" required>
                     </div>
                 </div>
 

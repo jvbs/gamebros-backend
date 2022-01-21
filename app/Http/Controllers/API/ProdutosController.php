@@ -31,7 +31,7 @@ class ProdutosController extends Controller
     public function index()
     {
         $data = Product::latest()->get();
-        return response()->json(['Produtos encontrados:', ProductsResource::collection($data)]);
+        return response()->json(ProductsResource::collection($data));
     }
 
     /**

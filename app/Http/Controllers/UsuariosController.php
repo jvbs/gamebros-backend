@@ -49,7 +49,8 @@ class UsuariosController extends Controller
         $validator = Validator::make($request->all(), $this->rules);
 
         if($validator->fails()){
-            return response()->json($validator->errors());
+            //return response()->json($validator->errors());
+            return redirect("user/create")->withErrors($validator->errors());
         }
 
         $role = 'admin';

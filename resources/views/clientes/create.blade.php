@@ -14,6 +14,12 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
     </div>
 
+    @if($errors->any())
+        <span class="text-danger">
+            {{ implode('', $errors->all(':message')) }}
+        </span>
+    @endif
+
     <form method="POST" action="{{route('clientes.store')}}">
     @csrf
     <div class="">
@@ -23,14 +29,14 @@
                 <div class="form-group">
                     <label for="user">Nome*</label>
                     <label for="InputNome"></label>
-                    <input type="text" name="name" class="form-control" id="InputNome" placeholder="">
+                    <input type="text" name="name" class="form-control" id="InputNome" placeholder="" required>
                 </div>
             </div>
             <div class="col-md-4 col-6">
                 <div class="form-group">
                     <label for="user">CPF*</label>
                     <label for="InputCPF"></label>
-                    <input type="text" name="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="InputCPF" placeholder="">
+                    <input type="text" name="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="InputCPF" placeholder="" required>
                 </div>
             </div>
             <div class="col-md-4 col-6">
@@ -50,7 +56,7 @@
                 <div class="form-group">
                     <label for="user">Email*</label>
                     <label for="InputEmail"></label>
-                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="">
+                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="" required>
                 </div>
             </div>
             <div class="col-md-4 col-6">
@@ -58,7 +64,7 @@
                     <label for="user">Telefone*</label>
                     <label for="InputTelefone"></label>
                     <input type="text" name="phone" class="form-control" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" id="InputTelefone"
-                        placeholder="">
+                        placeholder="" required>
                 </div>
             </div>
             <div class="col-md-4">
@@ -68,15 +74,15 @@
             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="InputSenha">Senha*</label>
-                    <input type="password" name="password" class="form-control" id="InputSenha" placeholder="">
+                    <input type="password" name="password" class="form-control" id="InputSenha" placeholder="" required>
                 </div>
             </div>
-            <div class="col-md-4 col-6 mt-4">
+<!--             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="InputConfirmarSenha">Confirmar Senha*</label>
-                    <input type="password" name="password" class="form-control" id="InputConfirmarSenha" placeholder="">
+                    <input type="password" name="password" class="form-control" id="InputConfirmarSenha" placeholder="" required>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4">
 
             </div>

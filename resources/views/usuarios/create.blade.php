@@ -14,6 +14,12 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
     </div>
 
+    @if($errors->any())
+        <span class="text-danger">
+            {{ implode('', $errors->all(':message')) }}
+        </span>
+    @endif
+
     <form method="POST" action="{{route('usuarios.store')}}">
     @csrf
     <div class="">
@@ -22,13 +28,13 @@
             <div class="col-md-4 col-6">
                 <div class="form-group">
                     <label for="user">Nome*</label>
-                    <input type="text" name="name" class="form-control" id="InputNome" placeholder="">
+                    <input type="text" name="name" class="form-control" id="InputNome" placeholder="" required>
                 </div>
             </div>
             <div class="col-md-4 col-6">
                 <div class="form-group">
                     <label for="user">CPF*</label>
-                    <input type="text" name="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="InputCPF" placeholder="">
+                    <input type="text" name="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" id="InputCPF" placeholder="" required>
                 </div>
             </div>
 
@@ -39,7 +45,7 @@
             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="user">E-mail*</label>
-                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="">
+                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="" required>
                 </div>
             </div>
             <div class="col-md-4 col-6 mt-4">
@@ -58,15 +64,15 @@
             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="InputSenha">Senha*</label>
-                    <input type="password" name="password" class="form-control" id="InputSenha" placeholder="">
+                    <input type="password" name="password" class="form-control" id="InputSenha" placeholder="" required>
                 </div>
             </div>
-            <div class="col-md-4 col-6 mt-4">
+<!--             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="InputConfirmarSenha">Confirmar Senha*</label>
-                    <input type="password" name="password" class="form-control" id="InputConfirmarSenha" placeholder="">
+                    <input type="password" name="password" class="form-control" id="InputConfirmarSenha" placeholder="" required>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4">
 
             </div>

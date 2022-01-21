@@ -62,12 +62,12 @@
                     <input type="password" name="password" class="form-control" id="InputSenha" placeholder="" value="">
                 </div>
             </div>
-            <div class="col-md-4 col-6 mt-4">
+<!--             <div class="col-md-4 col-6 mt-4">
                 <div class="form-group">
                     <label for="InputConfirmarSenha">Confirmar Senha*</label>
                     <input type="password" name="password" class="form-control" id="InputConfirmarSenha" placeholder="" value="">
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4">
 
             </div>

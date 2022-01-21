@@ -37,6 +37,7 @@ Route::get('/product/create', 'App\Http\Controllers\ProdutosController@create')-
 Route::post('/product/store', 'App\Http\Controllers\ProdutosController@store')->name('produtos.store');
 Route::get('/product/edit/{id}', 'App\Http\Controllers\ProdutosController@edit')->name('produtos.edit');
 Route::put('/product/update/{id}', 'App\Http\Controllers\ProdutosController@update')->name('produtos.update');
+Route::delete('/product/destroy/{id}', 'App\Http\Controllers\ProdutosController@destroy')->name('produtos.destroy');
 
 Route::get('/categories/index', 'App\Http\Controllers\CategoriasController@index')->name('categorias.index');
 Route::get('/categories/create', 'App\Http\Controllers\CategoriasController@create')->name('categorias.create');

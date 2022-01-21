@@ -55,7 +55,17 @@
                 <td>{{$produto->price}}</td>
                 <td>{{$produto->stock}}</td>
                 <td>
-                    <div type="button" class="col-8 btn-sm BtnEntrar"><a href="{{route('produtos.edit', $produto->id)}}">Editar</a></div>
+                    <div class="d-flex justify-content-end">
+                    <div type="button" class="col-4 btn-sm BtnEntrar"><a href="{{route('produtos.edit', $produto->id)}}">Editar</a></div>
+                    <div class="col-1"></div>
+                    <div type="button" class="col-4 btn-sm BtnRemover">
+                        <form action="{{route('produtos.destroy', $produto->id)}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" style="all: unset">Remover</div>
+                        </form>
+                    </div>
+                </div>
                 </td>
             </tr>
             @endforeach

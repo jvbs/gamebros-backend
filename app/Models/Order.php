@@ -9,6 +9,18 @@ class Order extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table = 'products';
-    protected $fillable = ['name', 'image', 'price', 'discount', 'stock', 'category_id', 'subCategory', 'description', 'sku'];
+    protected $table = 'orders';
+    protected $fillable = ['id', 'user_id'];
+    // 'price', 'discount', 'stock', 'category_id', 'subCategory', 'description', 'sku'
+
+        // usuário dono do pedido
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+        // productsOrder has many products (Produtos da order)
+
+    public function productsOrder() {
+        return $this->hasMany(Product::class);
+    }
 }

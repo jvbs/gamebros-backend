@@ -57,7 +57,8 @@ class CategoriasController extends Controller
         if (is_null($categoria)) {
             return response()->json('Dados não encontrados.', 404);
         }
-        return response()->json([new CategoriesResource($categoria)]);
+        $produtos = $categoria->products()->get();
+        return response()->json(['categorias' => $categoria, 'produtos' => $produtos]);
     }
 
     /**
