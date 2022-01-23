@@ -49,6 +49,7 @@
                 <td>
                     <div class="d-flex justify-content-end">
                         <div type="button" class="col-3 btn-sm BtnEntrar"><a href="{{route('categorias.edit', $category->id)}}">Editar</a></div>
+                        <div class="col-1"></div>
                         <div type="button" class="col-3 btn-sm BtnRemover">
                             <form action="{{route('categorias.destroy', $category->id)}}" method="POST">
                                 @csrf

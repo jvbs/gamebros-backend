@@ -13,6 +13,9 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $guarded = [];
 
+    const ADMIN_TYPE = 'admin';
+    const CLIENT_TYPE = 'client';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,8 +23,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'cpf',
         'email',
+        'phone',
         'password',
+        'role'
     ];
 
     /**
@@ -45,5 +51,20 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === self::ADMIN_TYPE;
+    }
+
+    public function cart(){
+
+        return $this->hasMany(Cart::class);
+    }
+
+    public function orders(){
+
+        return $this->hasMany(Order::class);
     }
 }

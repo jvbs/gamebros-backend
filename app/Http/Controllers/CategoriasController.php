@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Category;
+use Validator;
 use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
 {
+    private $rules = [
+        'name' => 'required|between:5,50',
+    ];
 
     private $categoria;
 
-    public function __construct(Categories $categoria)
+    public function __construct(Category $categoria)
     {
         $this->categoria = $categoria;
     }
     
     public function index(Request $request)
     {
-        $categorias = Categories::where([
+        $categorias = Category::where([
             ['name', '!=', Null],
             [function ($query) use ($request) {
                 if (($term = $request->term)) {
@@ -36,7 +40,14 @@ class CategoriasController extends Controller
 
     public function store(Request $request)
     {
-        Categories::create($request->all());
+        $validator = Validator::make($request->all(), $this->rules);
+
+        if($validator->fails()){
+            //return response()->json($validator->errors());
+            return redirect("categories/create")->withErrors($validator->errors());
+        }
+
+        Category::create($request->all());
         return redirect(route('categorias.index'))->with('success', 'Categoria criada');
     }
 

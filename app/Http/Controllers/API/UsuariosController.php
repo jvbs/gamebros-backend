@@ -29,6 +29,44 @@ class UsuariosController extends Controller
         return response()->json(['Usuários encontrados:', UsersResource::collection($data)]);
     }
 
+    public function login(Request $request){
+
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        
+        if (!$user || !Hash::check($request->password, $user->password)) {
+             return response()->json([["error" => "Credenciais incorretas."]], 401);         
+        }
+        
+        $user->token = $user->createToken('myapptoken')->plainTextToken;
+
+        return response()->json([
+            'user' => $user,
+            'id' => $user->id,
+            'msg' => $user->email . " " . "logado no sistema", 
+            'status' => "Sucesso",
+        ]);
+    }
+
+    public function logout(Request $request){
+
+        auth()->user()->tokens()->delete();
+
+        return ['message' => 'Deslogado'];
+
+/*         if ($request->user()->tokens()->delete()){
+            return response()->json(["success" => "Logout executato com sucesso"]);
+        } else {
+            return response()->json(["error" => "Problemas ao executar o LogOut"], 409);
+        } */
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
