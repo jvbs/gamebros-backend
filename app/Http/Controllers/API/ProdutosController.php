@@ -31,8 +31,12 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        $data = Product::latest()->get();
-        return response()->json(ProductsResource::collection($data));
+        //$data = Product::latest()->get();
+        $data = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_name')
+            ->get();
+        return response()->json($data);
     }
 
     /**
@@ -62,7 +66,6 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        //$product = Product::find($id);
         $product = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->select('products.*', 'categories.name as category_name')
