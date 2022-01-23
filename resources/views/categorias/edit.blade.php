@@ -2,7 +2,7 @@
 @section('content')
     <div class='row'>
         <div class="col-md-4 col-12" style="">
-            <h1 style="color: #170085">Nova Categoria</h1>
+            <h1 style="color: #170085">Categoria</h1>
         </div>
         <div class="col-md-8 col-12" style="background-color: #170085; border-radius: 30px; height: 45%; margin-top: 1%">
             .
@@ -14,21 +14,16 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
     </div>
 
-    @if($errors->any())
-        <span class="text-danger">
-            {{ implode('', $errors->all(':message')) }}
-        </span>
-    @endif
-
-    <form method="POST" action="{{route('categorias.store')}}">
+    <form method="POST" action="{{route('categorias.update', $categoria->id)}}">
     @csrf
+    @method('patch')
     <div class="row">
         <div class="col-sm-6 col-12">
             <div class="row">
                 <div class="col-12 mt-4">
                     <div class="form-group">
                         <label for="nome">Nome*</label>
-                        <input type="text" name="name" class="form-control" id="InputNome" placeholder="" required>
+                        <input type="text" name="name" class="form-control" id="InputNome" placeholder="" value="{{$categoria->name}}">
                     </div>
                 </div>
 

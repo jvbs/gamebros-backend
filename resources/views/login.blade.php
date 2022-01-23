@@ -18,6 +18,7 @@
 
 <body>
 
+
     <div class="row">
         <div class="col-md-5 col-12">
             <div class="form-login">
@@ -25,16 +26,23 @@
                 <p style="font-size: 14px; color: gray; margin-top:4vh; margin-bottom:4vh">
                     Se você já possui cadastro, utilize seu e-mail e senha para entrar
                 </p>
+                @if($errors->any())
+                    <span class="text-danger">
+                    {{ implode('', $errors->all(':message')) }}
+                    </span>
+                @endif
+                <form method="POST" action="{{ route('loginCustom') }}">
+                @csrf
                 <div class="input-field col-12 mt-4">
-                    <input id="user" type="text" class="validate">
+                    <input name="email" id="user" type="email" class="validate" required>
                     <label for="user">E-mail*</label>
                 </div>
                 <div class="input-field col-12 mt-4">
-                    <input id="password" type="password" class="validate">
+                    <input name="password" id="password" type="password" class="validate" required>
                     <label for="password">Senha*</label>
                 </div>
                 <div class="content-center ">
-                    <a href="{{ route('dash.index') }}" type="button" class="col-8 btn-lg BtnEntrar mt-4">Entrar</a>
+                    <button type="submit" class="col-8 btn-lg BtnEntrar mt-4">Entrar</a>
                 </div>
                 <p style="font-size: 12px; color: gray; margin-top:4vh; margin-bottom:4vh">
                     Os campos identificados com asteriscos (*) são de preenchimento
@@ -49,6 +57,7 @@
 
           </p>
             </div>
+            </form>
         </div>
         <div class="  col-md-7 col-12">
                         <div class="imgWrapper">
@@ -59,6 +68,7 @@
             </div>
         </div>
         <script type="text/javascript" src="js/materialize.min.js"></script>
+
 </body>
 
 </html>

@@ -170,10 +170,10 @@ a:visited {text-decoration: none !important;}
 }
 
 .Metricas{
-  padding: 20% ; 
+  padding: 20% ;
   font-size: 25px;
   margin: 5%;
-  background-color: #FCFCFC; 
+  background-color: #FCFCFC;
   border-radius: 30px;
   transition: 0.5s ease-in-out;
 }
@@ -196,13 +196,13 @@ p span {
     font-weight: bold;
     font-size: 14px;
   }
-  
+
   .TextVendasValorTotal{
     color: #149E3B;
     font-weight: bold;
     font-size: 18px;
   }
-  
+
   .TextVendasValorMedio{
     color: #818181;
     font-size: 18px;
@@ -217,13 +217,13 @@ p span {
     font-weight: bold;
     font-size: 16px;
   }
-  
+
   .TextVendasValorTotal{
     color: #149E3B;
     font-weight: bold;
     font-size: 22px;
   }
-  
+
   .TextVendasValorMedio{
     color: #818181;
     font-size: 22px;
@@ -238,13 +238,13 @@ p span {
     font-weight: bold;
     font-size: 25px;
   }
-  
+
   .TextVendasValorTotal{
     color: #149E3B;
     font-weight: bold;
     font-size: 36px;
   }
-  
+
   .TextVendasValorMedio{
     color: #818181;
     font-size: 36px;
@@ -297,7 +297,7 @@ p span {
 
 .BtnEntrar:hover {
   background-color: #ffeeaf !important;
-  
+
 }
 
 
@@ -309,13 +309,13 @@ p span {
   border-bottom: #E91E63 1.5px solid !important;
 }
 
-.form-control:focus{ 
-  border-color: inherit !important; 
-  -webkit-box-shadow: none !important; 
-  box-shadow: none !important; 
+.form-control:focus{
+  border-color: inherit !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
 
-.form-control:focus{ 
+.form-control:focus{
   border-color: #D3AF15 !important;
 }
 
@@ -362,6 +362,18 @@ p span {
   font-weight: bold;
 }
 
+.BtnRemover {
+  background-color: #EC3227 !important;
+  color: #dfdfdf !important;
+  border-radius: 30px !important;
+  transition: 0.5s ease-in-out !important;
+  border: #FFFFFF;
+  text-align: center !important;
+  padding: 2%;
+  border: solid 2px #EC3227 !important;
+  font-weight: bold;
+}
+
 .BtnCancelar{
   background-color: #FFF7CA !important;
   color: #252525 !important;
@@ -380,6 +392,10 @@ p span {
   border: solid 2px #dbba00 !important;
 }
 
+.BtnRemover:hover{
+  opacity: 40%;
+  border: solid 2px #ff6565 !important;
+}
 
 /* Produtos */
 
