@@ -13,4 +13,10 @@ class CartProduct extends Model
     protected $guarded = [];
 
     protected $table = 'cart_product';
+
+    protected $fillable = ['cart_id', 'product_id', 'amount'];
+
+    // public function product() {
+    //     return $this->belongsTo(Product::class);
+    // }
 }
