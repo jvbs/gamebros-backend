@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\Product;
 use App\Http\Resources\ProductsResource;
+use Illuminate\Support\Facades\DB;
 
 class ProdutosController extends Controller
 {
@@ -30,8 +31,12 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        $data = Product::latest()->get();
-        return response()->json(ProductsResource::collection($data));
+        //$data = Product::latest()->get();
+        $data = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_name')
+            ->get();
+        return response()->json($data);
     }
 
     /**
@@ -50,7 +55,7 @@ class ProdutosController extends Controller
 
         $product = Product::create($request->all());
 
-        return response()->json(['Produto criado com sucesso.', new ProductsResource($product)]);
+        return response()->json(new ProductsResource($product));
     }
 
     /**
@@ -61,11 +66,17 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_name')
+            ->where('products.id', $id)
+            ->first();
         if (is_null($product)) {
             return response()->json('Dados não encontrados.', 404);
         }
-        return response()->json([new ProductsResource($product)]);
+        // return response()->json(new ProductsResource($product));
+        return response()->json($product);
+
     }
 
     /**
@@ -97,7 +108,7 @@ class ProdutosController extends Controller
 
             $product->save();
 
-            return response()->json(['Produto atualizado com sucesso:', new ProductsResource($product)]);
+            return response()->json(new ProductsResource($product));
         }
     }
 

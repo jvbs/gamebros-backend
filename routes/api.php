@@ -30,11 +30,11 @@ Route::resource('categorias', App\Http\Controllers\API\CategoriasController::cla
 Route::resource('usuarios', App\Http\Controllers\API\UsuariosController::class);
 Route::resource('pedidos', App\Http\Controllers\API\PedidosController::class);
 Route::resource('carrinho', App\Http\Controllers\API\CarrinhoController::class);
-Route::post('/remove-prod', [CarrinhoController::class, 'removeProd']);
-Route::post('/remove-prod-one', [CarrinhoController::class, 'removeProdOne']);
-Route::get('/remove-cart', [CarrinhoController::class, 'removeCart']);
-Route::get('/cart', [CarrinhoController::class, 'cart']);
-Route::post('/login', [UsuariosController::class, 'login']);
+Route::post('/carrinho/remover-produto-carrinho', [CarrinhoController::class, 'removerProdutoCarrinho']);
+// Route::post('/remove-prod-one', [CarrinhoController::class, 'removeProdOne']);
+// Route::get('/remove-cart', [CarrinhoController::class, 'removeCart']);
+// Route::get('/cart', [CarrinhoController::class, 'cart']);
+// Route::post('/login', [UsuariosController::class, 'login']);
 //Route::post('/logout', [UsuariosController::class, 'logout']);
 
 //Route::post('/login', 'App\Http\Controllers\AuthController@loginCustom')->name('loginCustom');
