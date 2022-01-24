@@ -249,14 +249,31 @@ class CarrinhoController extends Controller
         $produtosCarrinho = DB::table('cart')
             ->leftJoin('cart_product', 'cart.id', '=', 'cart_product.cart_id')
             ->leftJoin('products', 'cart_product.product_id', '=', 'products.id')
-            ->select('cart.user_id', 'cart_product.id as cart_product_id', 'cart_product.amount', 'products.*')
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+            ->select(
+                'cart.user_id',
+                'cart_product.id as cart_product_id',
+                'cart_product.amount',
+                'products.*',
+                'categories.name as category_name'
+                )
             ->where([
                 ['cart.status', 1],
                 ['cart.user_id', $id]
             ])
             ->get();
 
-        return response()->json($produtosCarrinho);
+        (float)$total = 0;
+        foreach ($produtosCarrinho as $produto) {
+            $price = (float)$produto->price;
+            $total = $total + $price;
+        }
+
+        return response()->json([
+            "totalCarrinho" => $total,
+            "produtos" => $produtosCarrinho
+        ]);
+        //return response()->json($produtosCarrinho);
     }
 
     /**
