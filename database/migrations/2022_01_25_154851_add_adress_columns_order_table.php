@@ -17,7 +17,7 @@ class AddAdressColumnsOrderTable extends Migration
             $table->string('cep');
             $table->string('address');
             $table->integer('address_number');
-            $table->string('address_complement');
+            $table->string('address_complement')->nullable();
             $table->string('address_city');
             $table->string('address_uf');
         });

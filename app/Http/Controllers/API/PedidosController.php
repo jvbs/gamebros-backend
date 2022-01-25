@@ -13,7 +13,13 @@ class PedidosController extends Controller
     private $rules = [
         'user_id' => 'required|integer',
         'cart_id' => 'required|integer',
-        'total_price' => 'required|numeric'
+        'total_price' => 'required|numeric',
+        'cep' => 'required|string|between:8,8',
+        'address' => 'required|string',
+        'address_number' => 'required|integer',
+        'address_city' => 'required|string',
+        'address_uf' => 'required|string',
+        'address_complement' => 'string|nullable',
     ];
 
     /**
@@ -38,7 +44,7 @@ class PedidosController extends Controller
 
         if($validator->fails()){
             return response()->json(
-                ["message" => "Ocorreu um erro nos dados informados."]
+                ["message" => $validator->failed()]
             );
         }
 
@@ -66,7 +72,13 @@ class PedidosController extends Controller
                 ->insertGetId([
                     'user_id' => $request->user_id,
                     'cart_id' => $request->cart_id,
-                    'total_price' => $request->total_price
+                    'total_price' => $request->total_price,
+                    'cep' => $request->cep,
+                    'address' => $request->address,
+                    'address_number' => $request->address_number,
+                    'address_city' => $request->address_city,
+                    'address_complement' => $request->address_complement,
+                    'address_uf' => $request->address_uf,
                 ]);
 
         $orderProducts = [];
