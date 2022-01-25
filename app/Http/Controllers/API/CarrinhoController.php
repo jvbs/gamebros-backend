@@ -85,6 +85,7 @@ class CarrinhoController extends Controller
             ->leftJoin('products', 'cart_product.product_id', '=', 'products.id')
             ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
             ->select(
+                'cart.id as cart_id',
                 'cart.user_id',
                 'cart_product.id as cart_product_id',
                 'cart_product.amount',
