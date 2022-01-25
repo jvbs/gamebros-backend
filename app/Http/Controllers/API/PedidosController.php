@@ -4,9 +4,24 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
+// use App\Http\Resources\CategoriesResource;
+use Illuminate\Support\Facades\DB;
 
 class PedidosController extends Controller
 {
+    private $rules = [
+        'user_id' => 'required|integer',
+        'cart_id' => 'required|integer',
+        'total_price' => 'required|numeric',
+        'cep' => 'required|string|between:8,8',
+        'address' => 'required|string',
+        'address_number' => 'required|integer',
+        'address_city' => 'required|string',
+        'address_uf' => 'required|string',
+        'address_complement' => 'string|nullable',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -23,35 +38,67 @@ class PedidosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-/*     public function store(Request $request)
+     public function store(Request $request)
     {
-        $user = \auth()->user();
-        $carrinho = $user->getCarrinho()->first();
-        $produtosPedido =  $carrinho->getProdutosCarrinho()->get();
+        $validator = Validator::make($request->all(), $this->rules);
 
-        if(\sizeof($produtosPedido) == 0){
-            return \response()->json(['msg' => 'Não há produtos no carrinho', 'numero_pedido' => 0], 200);
+        if($validator->fails()){
+            return response()->json(
+                ["message" => $validator->failed()]
+            );
         }
 
-        $pedido = Order::create([
-            'id_user' => $user->id,
-        ]);
+        // buscar o carrinho
+        $produtosCarrinho = DB::table('cart')
+            ->leftJoin('cart_product', 'cart.id', '=', 'cart_product.cart_id')
+            ->leftJoin('products', 'cart_product.product_id', '=', 'products.id')
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+            ->select(
+                'cart.user_id',
+                'cart_product.id as cart_product_id',
+                'cart_product.amount',
+                'products.*',
+                'categories.name as category_name'
+                )
+            ->where([
+                ['cart.id', $request->cart_id],
+                ['cart.status', 1],
+                ['cart.user_id', $request->user_id]
+            ])
+            ->get();
 
-        foreach ($produtosPedido as $pp){
-            $prod = Produto::findOrFail($pp->id_produto);
+        // criando o pedido
+        $pedido = DB::table('orders')
+                ->insertGetId([
+                    'user_id' => $request->user_id,
+                    'cart_id' => $request->cart_id,
+                    'total_price' => $request->total_price,
+                    'cep' => $request->cep,
+                    'address' => $request->address,
+                    'address_number' => $request->address_number,
+                    'address_city' => $request->address_city,
+                    'address_complement' => $request->address_complement,
+                    'address_uf' => $request->address_uf,
+                ]);
 
-            ProductOrder::create([
-                'id_pedido' => $pedido->id,
-                'order_id' => $pp->id_produto,
-                'product_id' => $pp->qtd_produto,
-                'price' => $prod->vl_produto
+        $orderProducts = [];
+        for ($i=0; $i < count($produtosCarrinho); $i++) {
+            array_push($orderProducts, [
+                'order_id' => $pedido,
+                'product_id' => $produtosCarrinho[$i]->id
             ]);
-
-            TbProdutoCarrinho::where([['id_produto', $pp->id_produto], ['id_carrinho', $carrinho->id]])->delete();
         }
 
-        return \response()->json(['msg' => 'Pedido gerado com sucesso', 'numero_pedido' => $pedido->id], 200);
-    } */
+        DB::table('order_products')->insert($orderProducts);
+        DB::table('cart')
+            ->where('id', $request->cart_id)
+            ->update(['status' => 0]);
+
+        return response()->json([
+            'message' => 'Pedido criado com sucesso',
+            'order_id' => $pedido
+        ]);
+    }
 
     /**
      * Display the specified resource.
