@@ -108,7 +108,12 @@ class PedidosController extends Controller
      */
     public function show($id)
     {
-        //
+        $pedidosUsuario = DB::table('orders')
+            ->where(['user_id' => $id])
+            ->orderByDesc('id')
+            ->get();
+
+        return response()->json($pedidosUsuario);
     }
 
     /**
