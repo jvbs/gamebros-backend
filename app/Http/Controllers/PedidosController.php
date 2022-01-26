@@ -10,4 +10,9 @@ class PedidosController extends Controller
     {
         return view('pedidos.index');
     }
+
+    public function detail()
+    {
+        return view('pedidos.detail');
+    }
 }

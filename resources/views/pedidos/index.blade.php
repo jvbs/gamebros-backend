@@ -48,7 +48,7 @@
                 <td>Otto</td>
                 <td>445.00</td>
                 <td>
-                    <div type="button" class="col-8 btn-sm BtnEntrar">Detalhes</div>
+                    <a href="{{ route('pedidos.detail')}}" type="button" class="col-8 btn-sm BtnEntrar">Detalhes</a>
                 </td>
             </tr>
         
