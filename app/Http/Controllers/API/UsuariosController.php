@@ -16,6 +16,8 @@ class UsuariosController extends Controller
         'name' => 'required|between:5,50',
         'email' => 'required|email',
         'password' => 'required',
+        'cpf' => 'required|string',
+        'phone' => 'integer'
     ];
 
     /**
@@ -30,7 +32,6 @@ class UsuariosController extends Controller
     }
 
     public function login(Request $request){
-
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -38,11 +39,11 @@ class UsuariosController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        
+
         if (!$user || !Hash::check($request->password, $user->password)) {
-             return response()->json([["error" => "Credenciais incorretas."]], 401);         
+             return response()->json([["error" => "Credenciais incorretas."]], 401);
         }
-        
+
         $user->token = $user->createToken('myapptoken')->plainTextToken;
 
         return response()->json([
@@ -51,7 +52,7 @@ class UsuariosController extends Controller
             'name' => $user->name,
             'phone' => $user->phone,
             'cpf' => $user->cpf,
-            'msg' => $user->email . " " . "logado no sistema", 
+            'msg' => $user->email . " " . "logado no sistema",
             'status' => "Sucesso",
         ]);
     }
@@ -61,13 +62,6 @@ class UsuariosController extends Controller
         auth()->user()->tokens()->delete();
 
         return ['message' => 'Deslogado'];
-
-/*         if ($request->user()->tokens()->delete()){
-            return response()->json(["success" => "Logout executato com sucesso"]);
-        } else {
-            return response()->json(["error" => "Problemas ao executar o LogOut"], 409);
-        } */
-
     }
 
     /**
