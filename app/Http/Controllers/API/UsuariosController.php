@@ -46,8 +46,11 @@ class UsuariosController extends Controller
         $user->token = $user->createToken('myapptoken')->plainTextToken;
 
         return response()->json([
-            'user' => $user,
+            'token' => $user->token,
             'id' => $user->id,
+            'name' => $user->name,
+            'phone' => $user->phone,
+            'cpf' => $user->cpf,
             'msg' => $user->email . " " . "logado no sistema", 
             'status' => "Sucesso",
         ]);
