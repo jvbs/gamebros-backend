@@ -34,7 +34,7 @@ Route::post('/carrinho/remover-produto-carrinho', [CarrinhoController::class, 'r
 // Route::post('/remove-prod-one', [CarrinhoController::class, 'removeProdOne']);
 // Route::get('/remove-cart', [CarrinhoController::class, 'removeCart']);
 // Route::get('/cart', [CarrinhoController::class, 'cart']);
-// Route::post('/login', [UsuariosController::class, 'login']);
+Route::post('/login', [UsuariosController::class, 'login']);
 //Route::post('/logout', [UsuariosController::class, 'logout']);
 
 //Route::post('/login', 'App\Http\Controllers\AuthController@loginCustom')->name('loginCustom');

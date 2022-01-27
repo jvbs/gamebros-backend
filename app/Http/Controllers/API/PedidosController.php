@@ -62,8 +62,7 @@ class PedidosController extends Controller
                 )
             ->where([
                 ['cart.id', $request->cart_id],
-                ['cart.status', 1],
-                ['cart.user_id', $request->user_id]
+                ['cart.status', 1]
             ])
             ->get();
 
@@ -108,7 +107,12 @@ class PedidosController extends Controller
      */
     public function show($id)
     {
-        //
+        $pedidosUsuario = DB::table('orders')
+            ->where(['user_id' => $id])
+            ->orderByDesc('id')
+            ->get();
+
+        return response()->json($pedidosUsuario);
     }
 
     /**
