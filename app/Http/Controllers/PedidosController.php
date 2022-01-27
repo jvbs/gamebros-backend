@@ -19,7 +19,9 @@ class PedidosController extends Controller
             }]
         ])->paginate(10);
 
-        $orders = DB::table('orders')->get();
+        $orders = DB::table('orders')
+            ->orderByDesc('orders.id')
+            ->get();
 
         return view('pedidos.index', compact('orders', 'ordersSearch'));
     }

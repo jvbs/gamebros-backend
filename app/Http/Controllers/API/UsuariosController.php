@@ -78,9 +78,20 @@ class UsuariosController extends Controller
             return response()->json($validator->errors());
         }
 
-        $user = User::create($request->all());
+        $newRequest = [
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => $request->password,
+            "cpf" => $request->cpf,
+            "phone" => $request->phone,
+            "role" => "client"
+        ];
 
-        return response()->json(['Usuário criado com sucesso.', new UsersResource($user)]);
+        $user = User::create($newRequest);
+
+        return response()->json([
+                "message" => "Usuário criado com sucesso."
+            ]);
 
     }
 

@@ -46,11 +46,13 @@ class ProdutosController extends Controller
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->select('products.*', 'categories.name as category_name')
                 ->where('products.category_id', (int)$id)
+                ->orderByDesc('products.price')
                 ->get();
         } else {
             $data = DB::table('products')
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->select('products.*', 'categories.name as category_name')
+                ->orderByDesc('id')
                 ->get();
         }
         return response()->json($data);
