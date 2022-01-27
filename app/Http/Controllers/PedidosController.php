@@ -14,7 +14,7 @@ class PedidosController extends Controller
             ['id', '!=', 0],
             [function ($query) use ($request) {
                 if (($term = $request->term)) {
-                    $query->orWhere('id', '=', '%' . $term . '%')->get();
+                    $query->orWhere('id', $term)->get();
                 }
             }]
         ])->paginate(10);

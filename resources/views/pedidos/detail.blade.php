@@ -78,7 +78,7 @@
                 <th scope="row">{{$order->product_name}}</th>
                 <td>{{$order->product_sku}}</td>
                 <td>1</td>
-                <td>R${{$order->product_price}}</td>
+                <td>R$ {{$order->product_price}}</td>
             </tr>
         @endforeach
         </tbody>
@@ -91,7 +91,7 @@
         <thead>
             <tr>
                 <th scope="col">Subtotal</th></th>
-                <td scope="row">R${{$orders['0']->total_price-15}}</td>
+                <td scope="row">R$ {{number_format($orders['0']->total_price-15, 2)}}</td>
             </tr>
             <tr>
                 <th scope="col">Frete</th>
@@ -99,7 +99,7 @@
             </tr>
             <tr class="label-table-title">
                 <th scope="col">Total Geral</th>
-                <td>R${{$orders['0']->total_price}}</td>
+                <td>R$ {{$orders['0']->total_price}}</td>
             </tr>
          
         </thead>
