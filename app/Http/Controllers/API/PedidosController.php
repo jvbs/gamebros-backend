@@ -62,8 +62,7 @@ class PedidosController extends Controller
                 )
             ->where([
                 ['cart.id', $request->cart_id],
-                ['cart.status', 1],
-                ['cart.user_id', $request->user_id]
+                ['cart.status', 1]
             ])
             ->get();
 
