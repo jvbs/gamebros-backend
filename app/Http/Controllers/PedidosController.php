@@ -10,20 +10,16 @@ class PedidosController extends Controller
 {
     public function index(Request $request)
     {
-        $ordersSearch = Order::where([
+        $orders = Order::where([
             ['id', '!=', 0],
             [function ($query) use ($request) {
                 if (($term = $request->term)) {
-                    $query->orWhere('id', $term)->get();
+                    $query->orWhere('id', '=', $term)->get();
                 }
             }]
         ])->paginate(10);
 
-        $orders = DB::table('orders')
-            ->orderByDesc('orders.id')
-            ->get();
-
-        return view('pedidos.index', compact('orders', 'ordersSearch'));
+        return view('pedidos.index', compact('orders'));
     }
 
     public function detail($order)
