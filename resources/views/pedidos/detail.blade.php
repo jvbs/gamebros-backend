@@ -16,15 +16,15 @@
         <thead>
             <tr>
                 <th scope="col">N. Pedido</th>
-                <td>004</td>
+                <td>{{$orders['0']->order_id}}</td>
             </tr>
             <tr>
                 <th scope="col">Data</th> 
-                <td>03/04/2021</td>
+                <td>27/01/2022</td>
             </tr>
             <tr>
                 <th scope="col">Status</th> 
-                <td>Pendente</td>
+                <td>Aprovado</td>
             </tr>
         </thead>
         
@@ -41,15 +41,15 @@
         <thead>
             <tr>
                 <th scope="col">Nome</th>
-                <td>Alan Curry</td>
+                <td>{{$orders['0']->user_name}}</td>
             </tr>
             <tr>
                 <th scope="col">Email</th> 
-                <td>alan.c@gmail.com</td>
+                <td>{{$orders['0']->user_email}}</td>
             </tr>
             <tr>
                 <th scope="col">CPF</th> 
-                <td>594.654.646-75</td>
+                <td>{{$orders['0']->user_cpf}}</td>
             </tr>
         </thead>
         
@@ -73,13 +73,14 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($orders as $order)
             <tr>
-                <th scope="row">Pokemon Esmeralda</th>
-                <td>546</td>
+                <th scope="row">{{$order->product_name}}</th>
+                <td>{{$order->product_sku}}</td>
                 <td>1</td>
-                <td>445.00</td>
+                <td>R${{$order->product_price}}</td>
             </tr>
-        
+        @endforeach
         </tbody>
     </table>
 
@@ -90,7 +91,7 @@
         <thead>
             <tr>
                 <th scope="col">Subtotal</th></th>
-                <td scope="row">445.00</td>
+                <td scope="row">R${{$orders['0']->total_price-15}}</td>
             </tr>
             <tr>
                 <th scope="col">Frete</th>
@@ -98,7 +99,7 @@
             </tr>
             <tr class="label-table-title">
                 <th scope="col">Total Geral</th>
-                <td>460.00</td>
+                <td>R${{$orders['0']->total_price}}</td>
             </tr>
          
         </thead>
