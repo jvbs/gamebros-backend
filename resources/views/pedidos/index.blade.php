@@ -49,7 +49,7 @@
                 <th scope="row">{{$order->id}}</th>
                 <td>27/01/2022</td>
                 <td>{{$order->user_id}}</td>
-                <td>R${{$order->total_price}}</td>
+                <td>R$ {{$order->total_price}}</td>
                 <td>
                     <a href="{{ route('pedidos.detail', $order->id)}}" type="button" class="col-8 btn-sm BtnEntrar">Detalhes</a>
                 </td>
