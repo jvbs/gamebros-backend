@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\API\CarrinhoController;
+use App\Http\Controllers\API\ProdutosController;
 use App\Http\Controllers\API\UsuariosController;
 
 /*
@@ -26,6 +27,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 });
 
 Route::resource('produtos', App\Http\Controllers\API\ProdutosController::class);
+Route::get('/produtos/categoria/{id}', [ProdutosController::class, 'showByCategory']);
 Route::resource('categorias', App\Http\Controllers\API\CategoriasController::class);
 Route::resource('usuarios', App\Http\Controllers\API\UsuariosController::class);
 Route::resource('pedidos', App\Http\Controllers\API\PedidosController::class);

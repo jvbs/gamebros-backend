@@ -55,7 +55,7 @@ Route::delete('/user/destroy/{id}', 'App\Http\Controllers\UsuariosController@des
 
 
 Route::get('/order/index', 'App\Http\Controllers\PedidosController@index')->name('pedidos.index');
-
+Route::get('/order/detail/{id}', 'App\Http\Controllers\PedidosController@detail')->name('pedidos.detail');
 });
 
 Route::post('/login', 'App\Http\Controllers\AuthController@loginCustom')->name('loginCustom');

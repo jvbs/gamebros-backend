@@ -39,6 +39,25 @@ class ProdutosController extends Controller
         return response()->json($data);
     }
 
+    public function showByCategory($id)
+    {
+        if(isset($id) && !empty($id) && (int)$id !== 0){
+            $data = DB::table('products')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->select('products.*', 'categories.name as category_name')
+                ->where('products.category_id', (int)$id)
+                ->orderByDesc('products.price')
+                ->get();
+        } else {
+            $data = DB::table('products')
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->select('products.*', 'categories.name as category_name')
+                ->orderByDesc('id')
+                ->get();
+        }
+        return response()->json($data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

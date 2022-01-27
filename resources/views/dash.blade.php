@@ -11,22 +11,22 @@
     <div class='row'>
         <a href="{{ route('clientes.index')}}" class="col-lg-3 col-6 content-center" style="color: #E91E63;">
             <div class="Metricas">
-                <p><span>40</span><span>Clientes</span></p>
+                <p><span>{{$clientsCount}}</span><span>Clientes</span></p>
             </div>
         </a>
         <a href="{{ route('pedidos.index')}}" class="col-lg-3 col-6 content-center" style="color: #0CA4D4;">
             <div class="Metricas">
-                <p><span>12</span><span>Pedidos</span></p>
+                <p><span>{{$ordersCount}}</span><span>Pedidos</span></p>
             </div>
         </a>
         <a href="{{ route('produtos.index')}}" class="col-lg-3 col-6 content-center" style="color: #149E3B;">
             <div class="Metricas">
-                <p><span>34</span><span>Produtos</span></p>
+                <p><span>{{$productsCount}}</span><span>Produtos</span></p>
             </div>
         </a>
         <a href="{{ route('categorias.index')}}" class="col-lg-3 col-6 content-center" style="color: #D0AB0A;">
             <div class="Metricas">
-                <p><span>4</span><span>Categorias</span></p>
+                <p><span>{{$categoriesCount}}</span><span>Categorias</span></p>
             </div>
         </a>
     </div>
@@ -44,13 +44,13 @@
                     <span class="TextVendas">Vendas</span>
                 </div>
                 <div class="col-12">
-                    <span class="TextVendasValorTotal">R$ 12.000,00</span>
+                    <span class="TextVendasValorTotal">R$ {{$sellsCount}}</span>
                 </div>
                 <div class="col-12 mt-2">
                     <span class="TextVendas">Valor Médio</span>
                 </div>
                 <div class="col-12">
-                    <span class="TextVendasValorMedio">R$ 1.000,00</span>
+                    <span class="TextVendasValorMedio">R$ {{number_format($sellsCount / $ordersCount, 2)}}</span>
                 </div>
             </div>
         </div>

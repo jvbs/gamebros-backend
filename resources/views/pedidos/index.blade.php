@@ -8,12 +8,13 @@
             .
         </div>
     </div>
+    <form method="GET" action="{{route('pedidos.index')}}">
     <div class='row'>
         <div class="col-lg-6 col-10">
             
             <div class="form-group">
                 <label for="InputProduto"></label>
-                <input type="text" class="form-control" id="InputProduto"
+                <input type="text" name="term" class="form-control" id="InputProduto"
                     placeholder="Informe o numero do pedido">
             </div>
 
@@ -30,6 +31,7 @@
 
 
     </div>
+    </form>
 
     <table class="table" style="margin-top: 6vh; text-align: center">
         <thead>
@@ -42,16 +44,17 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($orders as $order)
             <tr>
-                <th scope="row">1</th>
-                <td>03/04/2021</td>
-                <td>Otto</td>
-                <td>445.00</td>
+                <th scope="row">{{$order->id}}</th>
+                <td>27/01/2022</td>
+                <td>{{$order->user_id}}</td>
+                <td>R$ {{$order->total_price}}</td>
                 <td>
-                    <div type="button" class="col-8 btn-sm BtnEntrar">Detalhes</div>
+                    <a href="{{ route('pedidos.detail', $order->id)}}" type="button" class="col-8 btn-sm BtnEntrar">Detalhes</a>
                 </td>
             </tr>
-        
+        @endforeach
         </tbody>
     </table>
 
