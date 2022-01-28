@@ -57,12 +57,40 @@
 
         </div>
 
+        <div class="col-lg-6 col-10">
+            <h1 style="font-size: 22px; margin-top: 2vh; margin-bottom: 3vh; color: #EC3227">Informações de Entrega</h1>
 
+        <table class="table" style="margin-top: 1vh; font-size: 14px;">
+            <thead>
+                    <tr>
+                        <th scope="col">CEP</th>
+                        <td scope="row">{{$orders['0']->order_cep}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Endereço</th>
+                        <td>{{$orders['0']->order_address}}</td>
+                        <td>{{$orders['0']->order_address_number}}</td>
+                        <td>{{$orders['0']->order_address_complement}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Cidade</th>
+                        <td>{{$orders['0']->order_city}}</td>
+                        <td>{{$orders['0']->order_uf}}</td>
+                        <td></td>
+                    </tr>
+                </thead>
+            
+        
+        </table>
+
+        </div>
     </div>
 
     <h1 style="font-size: 22px; margin-top: 2vh; margin-bottom: 3vh; color: #EC3227">Itens Encomendados</h1>
 
-    <table class="table" style="margin-top: 6vh; text-align: center">
+    <table class="table" style="margin-top: 3vh; text-align: center">
         <thead>
             <tr class="label-table-title">
                 <th scope="col">Produto</th></th>
@@ -78,7 +106,7 @@
                 <th scope="row">{{$order->product_name}}</th>
                 <td>{{$order->product_sku}}</td>
                 <td>1</td>
-                <td>R$ {{$order->product_price}}</td>
+                <td>R$ {{number_format($order->product_price, 2, ',', '.')}}</td>
             </tr>
         @endforeach
         </tbody>
@@ -91,7 +119,7 @@
         <thead>
             <tr>
                 <th scope="col">Subtotal</th></th>
-                <td scope="row">R$ {{number_format($orders['0']->total_price-15, 2)}}</td>
+                <td scope="row">R$ {{number_format($orders['0']->total_price-15, 2, ',', '.')}}</td>
             </tr>
             <tr>
                 <th scope="col">Frete</th>
@@ -99,7 +127,7 @@
             </tr>
             <tr class="label-table-title">
                 <th scope="col">Total Geral</th>
-                <td>R$ {{$orders['0']->total_price}}</td>
+                <td>R$ {{number_format($orders['0']->total_price, 2, ',', '.')}}</td>
             </tr>
          
         </thead>

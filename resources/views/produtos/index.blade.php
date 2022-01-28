@@ -52,7 +52,7 @@
                 <td>{{$produto->name}}</td>
                 <td>{{$produto->category->name}}</td>
                 <td>{{$produto->subCategory}}</td>    
-                <td>{{$produto->price}}</td>
+                <td>R$ {{number_format($produto->price, 2, ',', '.')}}</td>
                 <td>{{$produto->stock}}</td>
                 <td>
                     <div class="d-flex justify-content-end">

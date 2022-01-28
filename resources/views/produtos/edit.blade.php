@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="sub-categoria">Sub-Categoria*</label>
                         <select name="subCategory" class="form-control" required>
-                            <option value="" disabled selected>Selecione</option>
+                            <option value="{{$product->subCategory}}" disabled selected>Selecione</option>
                             <option>Acessórios</option>
                             <option>Console</option>
                             <option>Jogos</option>

@@ -44,13 +44,13 @@
                     <span class="TextVendas">Vendas</span>
                 </div>
                 <div class="col-12">
-                    <span class="TextVendasValorTotal">R$ {{$sellsCount}}</span>
+                    <span class="TextVendasValorTotal">R$ {{number_format($sellsCount, 2, ',', '.')}}</span>
                 </div>
                 <div class="col-12 mt-2">
                     <span class="TextVendas">Valor Médio</span>
                 </div>
                 <div class="col-12">
-                    <span class="TextVendasValorMedio">R$ {{number_format($sellsCount / $ordersCount, 2)}}</span>
+                    <span class="TextVendasValorMedio">R$ {{number_format($sellsCount / $ordersCount, 2, ',', '.')}}</span>
                 </div>
             </div>
         </div>
